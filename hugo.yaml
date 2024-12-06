@@ -1,0 +1,65 @@
+baseURL: "https://bunin.dev/"
+languageCode: "en-us"
+title: "bunin.dev"
+theme: "PaperMod"
+defaultContentLanguage: "en"
+defaultContentLanguageInSubdir: true
+enableEmoji: true
+enableRobotsTXT: true
+
+languages:
+  en:
+    contentDir: "content/en"
+    disabled: false
+    languageCode: "en-US"
+    languageDirection: "ltr"
+    languageName: "English"
+    title: "bunin.dev"
+    weight: 1
+    params:
+      subtitle: "Programming and Technical stuff, mostly"
+      homeInfoParams:
+        Title: Hello, I'm bunin!
+  ru:
+    contentDir: "content/ru"
+    disabled: false
+    languageCode: "ru-RU"
+    languageDirection: "ltr"
+    languageName: "Russian"
+    title: "bunin.dev"
+    weight: 2
+    params:
+      languageAltTitle: 'Русский'
+      subtitle: "Технические вещи, в основном"
+      homeInfoParams:
+        Title: Привет, я - Бунин!
+
+services:
+  googleAnalytics:
+    id: "G-990YJWSYT4"
+
+params:
+  DateFormat: ":date_long"
+  ShowReadingTime: true
+  defaultTheme: auto
+  profileMode:
+#    enabled: true
+  socialIcons:
+#    - name: rss
+#      url:
+    - name: github
+      url: "https://github.com/bunin"
+    - name: email
+      url: "mailto:alex@bunin.dev"
+    - name: linkedin
+      url: https://www.linkedin.com/in/alexander-baran/
+    - name: youtube
+      url: https://www.youtube.com/@bun1n
+    - name: buymeacoffee
+      url: https://buymeacoffee.com/bunin.dev
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON

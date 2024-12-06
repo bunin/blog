@@ -1,8 +1,0 @@
-baseURL = 'https://bunin.dev/'
-languageCode = 'en-us'
-title = 'bunin.dev'
-theme = 'PaperMod'
-
-[services]
-[services.googleAnalytics]
-id = 'G-990YJWSYT4'
