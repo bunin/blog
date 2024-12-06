@@ -1,23 +1,8 @@
-baseURL = 'https://blog.bunin.dev/'
+baseURL = 'https://bunin.dev/'
 languageCode = 'en-us'
-title = 'bunin.dev blog'
+title = 'bunin.dev'
 theme = 'PaperMod'
 
-[deployment]
-
-[[deployment.targets]]
-# An arbitrary name for this target.
-name = "production"
-
-# URL specifies the Go Cloud Development Kit URL to deploy to. Examples:
-URL = "s3://blog.bunin.dev?endpoint="
-
-# Google Cloud Storage -- see https://gocloud.dev/howto/blob/#gcs
-#URL = "gs://<Bucket Name>"
-
-# Amazon Web Services S3; see https://gocloud.dev/howto/blob/#s3
-# For S3-compatible endpoints, see https://gocloud.dev/howto/blob/#s3-compatible
-#URL = "s3://<Bucket Name>?region=<AWS region>"
-
-# Microsoft Azure Blob Storage; see https://gocloud.dev/howto/blob/#azure
-#URL = "azblob://$web"
+[services]
+[services.googleAnalytics]
+id = 'G-990YJWSYT4'
