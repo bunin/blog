@@ -1,0 +1,48 @@
+{{- /* Comments area start */ -}}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        function getGiscusTheme() {
+            const theme = localStorage.getItem('pref-theme');
+            if (!theme) return 'preferred_color_scheme';
+            return theme === 'dark' ? 'noborder_dark' : 'noborder_light';
+        }
+
+        const giscusScript = document.createElement('script');
+
+        giscusScript.src = 'https://giscus.app/client.js';
+        giscusScript.dataset.repo = 'bunin/blog';
+        giscusScript.dataset.repoId = 'R_kgDONZwnbA';
+        giscusScript.dataset.category = 'Announcements';
+        giscusScript.dataset.categoryId = 'DIC_kwDONZwnbM4ClGOd';
+        giscusScript.dataset.mapping = 'pathname';
+        giscusScript.dataset.strict = '0';
+        giscusScript.dataset.reactionsEnabled = '1';
+        giscusScript.dataset.emitMetadata = '0';
+        giscusScript.dataset.inputPosition = 'bottom';
+        giscusScript.dataset.theme = getGiscusTheme();
+        giscusScript.dataset.lang = '{{ .Site.Language.Lang }}';
+        giscusScript.crossOrigin = 'anonymous';
+        giscusScript.async = true;
+
+        document.body.appendChild(giscusScript);
+
+{{- if (not site.Params.disableThemeToggle) }}
+        function setGiscusTheme() {
+            function sendMessage(message) {
+                const iframe = document.querySelector('iframe.giscus-frame');
+                if (!iframe) return;
+                iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+            }
+            sendMessage({
+                setConfig: {
+                    theme: getGiscusTheme(),
+                },
+            });
+        }
+
+        document.getElementById("theme-toggle").addEventListener("click", setGiscusTheme);
+{{- end }}
+    });
+</script>
+<div class="giscus"></div>
+{{- /* Comments area end */ -}}

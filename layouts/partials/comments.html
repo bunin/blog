@@ -1,48 +1,25 @@
 {{- /* Comments area start */ -}}
 <script>
+    function getTheme() {
+        const theme = localStorage.getItem('pref-theme');
+        return theme === 'dark' ? 'dark' : 'light';
+    }
+    var remark_config = {
+        host: "https://remark.bunin.dev",
+        site_id: "bunin.dev",
+        theme: getTheme(),
+        locale: "{{ .Site.Language.Lang }}",
+    };
+    {{- if (not site.Params.disableThemeToggle) }}
     document.addEventListener('DOMContentLoaded', function () {
-        function getGiscusTheme() {
-            const theme = localStorage.getItem('pref-theme');
-            if (!theme) return 'preferred_color_scheme';
-            return theme === 'dark' ? 'noborder_dark' : 'noborder_light';
-        }
-
-        const giscusScript = document.createElement('script');
-
-        giscusScript.src = 'https://giscus.app/client.js';
-        giscusScript.dataset.repo = 'bunin/blog';
-        giscusScript.dataset.repoId = 'R_kgDONZwnbA';
-        giscusScript.dataset.category = 'Announcements';
-        giscusScript.dataset.categoryId = 'DIC_kwDONZwnbM4ClGOd';
-        giscusScript.dataset.mapping = 'pathname';
-        giscusScript.dataset.strict = '0';
-        giscusScript.dataset.reactionsEnabled = '1';
-        giscusScript.dataset.emitMetadata = '0';
-        giscusScript.dataset.inputPosition = 'bottom';
-        giscusScript.dataset.theme = getGiscusTheme();
-        giscusScript.dataset.lang = '{{ .Site.Language.Lang }}';
-        giscusScript.crossOrigin = 'anonymous';
-        giscusScript.async = true;
-
-        document.body.appendChild(giscusScript);
-
-{{- if (not site.Params.disableThemeToggle) }}
         function setGiscusTheme() {
-            function sendMessage(message) {
-                const iframe = document.querySelector('iframe.giscus-frame');
-                if (!iframe) return;
-                iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-            }
-            sendMessage({
-                setConfig: {
-                    theme: getGiscusTheme(),
-                },
-            });
+            window.REMARK42.changeTheme(getTheme())
         }
 
         document.getElementById("theme-toggle").addEventListener("click", setGiscusTheme);
-{{- end }}
     });
+    {{- end }}
 </script>
-<div class="giscus"></div>
+<script>!function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);</script>
+<div id="remark42"></div>
 {{- /* Comments area end */ -}}
